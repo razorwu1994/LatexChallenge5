@@ -1,0 +1,39 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Ruicheng Wu}
+\rhead{06/30/2017}
+\chead{Challenge problem}
+
+\begin{document}
+1.\\$m/n$ can have remainder $0,1,2...n-1$,there will be infinite remainders (even $1/1$ can be kept expressing as $1/1$),so according to pigeon hole principle, there will be repeating remainder after dividing by $n_th$ number.So number of places of $n$ is the upper bound . 
+
+2.\\Construct a model of this as a graph. The string leading to a person stands for the degree of a node in graph. So,the sum of
+degree of every node is actually twice of the total edge number,which is the actual number of strings. Because every string is counted twice. Given the total number of degree $S$(people can get this by communicating with each other),by division principle, the total string number is $S/2$.
+
+3.\\Obviously,$C(a+b,b)$ is the number of total ways to construct a monotonic path by thinking there is $a$ ways to go horizontally, $b$ ways to go vertically. In order to find the ways that go stay or below $y=x$,by subtraction rule, the total ways minus the ways that goes above $y=x$ is the answer.
+$C(a+b,b-1)$ when $b \leq a$ stands for given a total arrangement of $HHHHHHVVVVVV$ with $a H's, b V's$ that choose $b-1$ spots to put $V's$, for the remaining one $V$, there is always one situation that makes the path go above the line. So choosing paths going above is $C(a+b,b-1)$. To choose path stay or below is $$C(a+b,b) - C(a+b,b-1)$$ 
+
+4. \\According to figure 1, a $4x4$ grid with a corner removed can be constructed from this tile. Since the given range of grid is $2^n x 2^n$ with $n>=2$ it can always be constructed by $4x4$ grid. In order to do this, just keep split the entire gird by 4 until each unit is a small $4x4$ grid. The one with a corner removing can be immediately tiled by figure 1, the rest 3 actually an spare another $'L'$ shape when their missing corners are next to each other, then just put another small unit tile will construct a entire $8 x 8$ square. By keep doing so, any $2^n x 2^n$ square can be constructed.
+
+5. \\Multiset permutation : $$15!/5!5!5!$$
+Size of identical necklaces with rotation and reflection : $$15 * 2$$
+Result : $$15!/(5!5!5!(15*2))$$
+
+6.Everything is based on whether a set contain duplicate or not. Say $${(1,1,2,3}) == ({1,2,3}) = [3]$$, $n = 3$. Then his method won't work. Assume given $$(1,1,2,3) , n_1 = 2,n_2 = 1,n_3 = 1$$,Obviously there is $3$ ways to choose size 2 set contains 1: $(1,1),(1,2),(1,3)$,but his formula gives $C(3-1,2-1) = 2$. If the given set doesn't contain any duplicate ,say $(1,2,3)$,then his formula gives same result as counting. So I claim that Count Chocula's method only works for set that doesn't contain duplicate. By giving this, first part contains 1 will have 1 choose already,so the range number to choose is n-1, then there is only $n_1-1$ ways to choose other element. And so forth. The things matter here is n,if n stands for the total numbers of element,this formula will work; if n is just the max number of set [n], it won't work.
+	 
+7.\\Think of a example for 5;$$(5), (4, 1), (3, 2), (3, 1, 1), (2, 2, 1), (2, 1, 1, 1), and (1, 1, 1, 1, 1)$$
+Now function: $$p(n,k) =$$ number of partitions of n with at most k parts
+$$q(n,k) = $$ number of partitions in which each part is of size at most k 
+here.Giving an example, $$p(5,3) = |{(5), (4, 1), (3, 2), (3, 1, 1), (2, 2, 1)}|= 5 $$
+and $$q(5,3) = |{(3, 2), (3, 1, 1), (2, 2, 1), (2, 1, 1, 1),(1, 1, 1, 1, 1)}| = 5$$
+I observe that one element from $p(n,k)$ is corresponding to another value in $q(n,k)$. In this case, $(5) -> (1,1,1,1,1)$;
+$(4, 1) -> (2, 2, 1)$. Because the total sum of both sides are same, I will construct a graph made by $1x1$ unit cubes. Think $(5)$ as 5 cubes lining up in one row, while $(1,1,1,1,1)$ as 5 cubes lining up in one column. The same thing apples to $(4, 1) -> (2, 2, 1)$. 
+
+Assume an element from $p(n,k)$ is constructed by graph $(p_1,p_2...p_k)$,then its mapping element in $q(n,k)$ is constructed by its symmetrical graph by all columns switching with rows.
+
+Since for every element in $q(n,k)$ can and only can be found in one corresponding element in  $p(n,k)$, it is one to one relationship between this two functions.\\So it proves number of partitions of n with at most k parts = number of partitions in which each part is of size at most k 
+
+ 
+\end{document}

@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Ruicheng Wu}
+\rhead{07/18/2017}
+\chead{Homework 8}
+
+\begin{document}
+1.
+
+a) according to theorem 2.1,"A connected graph G with n vertices has at least n − 1 edges". Suppose $G$ is a disconnected graph , so it will have edge at range of $[0,n-2]$,where $n \geq 2$.We also know that complete graph have 
+$\frac{n(n-1)}{2}$ edges.So G(compliment) will have at least $$\frac{n(n-1)}{2}-n+2$$ edges. We compare $\frac{n(n-1)}{2}-n+2$ with $n-1$ 
+
+Assume G(compliment) is connected,so i must have $\frac{n(n-1)}{2}-n+2 \geq n-1$
+
+Solve for : $n^2-5n+6 \geq 0$, $n <= 2$ and $n >= 3$. According to this question,so it will always be true that G(compliment) has more than $n-1$ edges. So it proves it is connected graph(Here excluding the multi-graph situation)
+
+b)
+Assume it is disconnected,then there must existing at least one vertex that with 0 degree.Then no matter which another vertex we find, we can only find up to degree $(n-1-1)$,since there existing at least one vertex disconnecting.Add them up,$(n-2)$  
+is the max value which fails the given condition. 
+
+Let's try another way : given the condition, $d(u) + d(v) \geq n-1$.If the graph is disconnected, assume $u$ have the max degree $n-1$ ,there must be one vertex $v$ with degree 0 to satisfy the disconnecting graph condition. However, $u$ should not be $n-1$ because there is one not connecting to it.
+
+Hence,by above two contradiction: given there every pair satisfy $d(u) + d(v) \geq n-1$,the graph can't be disconnected. A graph that is not connected which is disconnected.
+
+2.
+
+Since it is a cycle with n vertex. We can choose path start from $P_1$ to $P_{n-1}$,since $P_n$ is $C_n$ itself. Since those path are labeled,we have n ways to choose each path,for example $$(n,1,2...n-2),(1,2,3...n-1),(2,3,4...n) $$ are all different path for $P_{n-1}$. 
+
+So the formula of sub-graph of $C_n $ is : $n^{n-1}$
+
+3.
+
+By contradiction, we assume two cases:
+
+First : Any tree with a least 2 vertices has 1 vertex of degree 1. This is never true since $\sum_n deg(n) $ = 2$|E|$ which is even;
+
+Second:Any tree with a least 2 vertices has 0 vertex of degree 1.So there every vertex must be at least degree 2. Set up the equation :$$\sum_n deg(n) = 2*n \leq 2*|E|$$.However ,we know a tree is acyclic connected graph with exactly $n-1$ edges. $|E|= n-1 \geq n$ is a contradiction. So this case can never happen
+
+By negating those two cases,the case "Any tree with at least 2 vertices has at 
+
+least 2 vertices of degree 1" is true. 
+
+4.
+
+By definition, tree is acyclic connected graph. There always is a path from one vertex $u$ to another vertex $v$. Now assume there are not only one way from $u$ to reach $v$.There must be at least one cycle to make another path. But the fact of the cycle disobey the definition. So as acyclic connected graph, there is only one and so unique path between any two distinct vertices in a tree.
+
+
+
+\end{document}

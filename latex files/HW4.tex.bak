@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Ruicheng Wu}
+\rhead{07/7/2017}
+\chead{Homework 4}
+
+\begin{document}
+1.\\Assume $a(n)$ is a function stands for "at least $n$ couple are sitting next to each other (means either adjacent or facing each other,this function will be overcounted)".We observe that a(0) = $(2n)!$,sample space $S$,$A_i$ stands for $i_{th}$ couple sitting next to each other.For instance,$a(2) = \sum_{j<k} A_j \cap A_k$.By inclusion-exclusion principle,this is a derangement problem,$|S-(A_0 \cup A_1 ... \cup A_n)|$ is the answer to it. So $S = a(0) =2n!$,$$a(i)=C(n,i)*2^i*{((2n-i)!)}$$,stands for "i couples in total,choose i from n couple,C(n,i);each couple will have 2 permutation,$2^n$;then treat those together couple as a whole entity,there are $2n-i$ entity to arrange,so $(2n-i)!.$
+
+The actual function for this derangement is :$\sum_{i=0}^n(-1)^i*a(i)$,because $S-|A_1|-|A_2|...-|A_n|+\sum_{|{i_1},{i_2}|=2}|A_{i_1} \cap A_{i_2}|-...$.Here S is $2n!$,all other elements can be represented by $(-1)^i*a(i)$.
+
+By summarize above, plug $a(i)$ in,${2n!}$ also satisfies the summation ,$\sum_{i=0}^n(-2)^i*C(n,i)*{((2n-i)!)}$
+
+2.\\Since it is a linear recurrence relationship,there must be a function $f(n)$ for $b_n$.$f(n)$= $q^n,q\neq0$.Plug it in,$$q^n=2q^{n-1}+2q^{n-2}$$$$q^{n-2}*(q^2-2q-2)=0$$,since $q \neq0$,$(q^2-2q-2)=0$,$q_+ = 1+\sqrt{3},q_- = 1-\sqrt{3}$.Obviously,we need some constants attached to each term.Suppose there are $c_+,c_-$.$$f(n)=c_+*{(1+\sqrt{3})}^n+c_-*{(1-\sqrt{3})}^n$$
+Now plug $b_0=0,b_1=1$,$c_+=\frac{\sqrt{3}}{6},c_-=-\frac{\sqrt{3}}{6}$.So $$f(n)=\frac{\sqrt{3}}{6}*{(1+\sqrt{3})}^n+(-\frac{\sqrt{3}}{6})*{(1-\sqrt{3})}^n$$
+
+3.\\By observation,
+
+A) we could place a domino on first row, so there are $a_{n−1}$ ways to tile the rest of the grid.
+
+B) or we could place the domino horizontally on it, so we must place another domino horizontally below that and there are $a_{n−2}$ ways to tile the rest of the grid.
+
+So,$a_0=1,a_1=1,a_2=2,a_3=3$,$a_n=a_{n-1}+a_{n-2}$
+
+4.\\By observation,
+
+A) we could place a $1x1$ domino on first first row ,there is only one spot left on first row,then if we choose to place another $1x1$ domino,there is $a_{n-1}$ ways to place rest tiles,regardless of we switch the order of both $1x1$ tile or not.But if we choose to place a 'L' domino on the first row,they make a $2x2$ square,in this case, there are  $a_{n-2}$ ways.However,the place where to put first $1x1$ matter in this case.Both cases gives out same ways,so it is $2*a_{n-2}$ ways.The grand total of this situation is $a{n_1}+2*a{n-2}$
+
+B) If we place a 'L' domino on first row and make it take over the whole first row.There are two ways to do that 'L' and upside-down 'L' on the board. No matter which case we can continue put one more $1x1$ tile to make a $2x2$ square with rest of $a{n_2}$ ways or we put another 'L' to make a $2x3$ rectangle with composed with 2 $'L's$,which gives $a{n-3}$ ways.Since there are ways to start the first step, so the grand total of this situation is $2*a{n_2}+2*a{n-3}$
+
+By addition rule, the total is : $a_n=a_{n-1}+4*a_{n-2}+2*a_{n-3}$
+
+We also find the base case:
+$a_0=1,a_1=1,a_2=4,a_3=10$,which satisfies the recurrence relation.
+\end{document}

@@ -1,0 +1,38 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Ruicheng Wu}
+\rhead{07/01/2017}
+\chead{Homework 2}
+
+\begin{document}
+1.\\Multiset Permutation:There are four options made to select 10 permutations: $10!/3!4!2!1!+10!/3!4!1!2!+10!/2!4!2!2!+10!/3!3!2!2!$
+
+2.\\ a)By applying multinomial formula,$C((18),(5,13))*3^5*(-2)^{13}$
+
+the answer is 0,because the sum of coefficient is $8+9=17$,which is not $18$.So by no means, there is not a term $x^8y^9$ in the expansion of the original function. So the coefficient is 0.\\
+b)By applying multinomial formula,$C((9),(3,3,1,2))*(-1)^3*2*(-2)^2$
+
+3.\\
+Choice of diamond(0-7) ： $8$\\
+Choice of pearls(0-9) ：$10$\\
+Choice of doubloons(0-34) :$35$\\
+Grand Total:$8*10*35=2800$
+
+4\\This is a distinguishable bins with undistinguishable balls,each horse is like bins,the money is like balls. So the answer is:
+$C(100+n-1,n-1)$
+
+5\\Think there are $13$ balls,$4$ containers need $3$ dividers.
+
+a)$x_1=3,x_2=2$,there are 9 choices for $x_3$,and make $x_4$ fulfil the sum equal 13;
+by keep doing this until $x_1=3,x_2=10$,there is $(9+1)*9/2=45$. $x_1=4,x_2=2$, this time starts from 8 choices,so this when $x_1=4$,the total is $(8+1)*8/2=36$.By keep adding the total until $x_1=11,x_2=2$,then there is only 1 choices,and no more $x_1$ can choose.\\The grand total should be $45+36+(7+1)*7/2+(6+1)*6/2+(5+1)*5/2+(4+1)*4/2+(3+1)*3/2+(2+1)*2/2+(1+1)*1/2 = 45+36+28+21+15+10+6+3+2+1 = 167 $
+
+b)First set up $x_2$, there are $5$ options in total:\\ $x_2 = 5$,three containers need two dividers,according to formula : $C((8+3-1),(3-1))$;$x_2 = 4$, $C((9+3-1),(3-1))$;$x_2 = 3$, $C((10+3-1),(3-1))$;$x_2 = 2$, $C((11+3-1),(3-1))$;$x_2 = 1$, $C((12+3-1),(3-1))$;$x_2 = 0$, $C((13+3-1),(3-1))$;The grand total is :$C(10,2)+C(11,2)+C(12,2)+C(13,2)+C(14,2)+C(15,2)$
+
+c)The answer is 0. Since the question is asking all $x_i's$ be multiple of 3. Assume $$x_1 = 3*j$$ $$x_2 = 3*k$$ $$x_3 = 3*l$$ $$x_4 = 3*m$$. Their sum is $3*(j+k+l+m)$, assume it be the LHS of $x_1+x_2+x_3+x_4 = 13$. $13/3$  is not an integer , it contradicts the equation. So the number of non negative solution is 0.
+
+6.Given there are $45$ moves,the numbers of way to get from front lower left to back upper right is :\\Choice 1: choose (1,0,0) moves,$$C(45,10)$$\\Choice 2: choose (0,1,0) moves,$$C(45,15)$$\\Choice 3: choose (0,0,1) moves,$$C(45,20)$$\\By multiplication rule:$$C(45,10) *C(45,15)*C(45,20)$$
+
+
+\end{document}

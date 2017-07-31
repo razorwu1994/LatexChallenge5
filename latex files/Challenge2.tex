@@ -1,0 +1,80 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Ruicheng Wu}
+\rhead{07/9/2017}
+\chead{Challenge Problem 2}
+
+
+\begin{document}
+1.\\We can conclude that $\phi(p^k) = p^k-p^{k-1}=p^k*(1-\frac{1}{p})$.Since p is prime,there is $p^{k-1}$ numbers can be divisible to $p^k$,like $p,2p...p^{k-1}*p$ in total.Subtracting those numbers from $p^k$ will give other numbers which are prime to $p^k$.
+
+Since for $p_1...p_i$ are distinct prime numbers dividing n(1 doesn't count).There is always an equation existing: $n=p_1^{j_1}*p_2^{j_2}...*p_i^{j_i}$. Applying $\phi(n)$, will give $$p_1^{j_1}*(1-\frac{1}{p_1})*p_2^{j_2}*(1-\frac{1}{p_2})*...*p_i^{j_i}*(1-\frac{1}{p_i})$$
+
+equals:$p_1^{j_1}*p_2^{j_2}*...p_i^{j_i}*(1-\frac{1}{p_1})*(1-\frac{1}{p_2})*...(1-\frac{1}{p_i})$
+
+$=n*(1-\frac{1}{p_1})*(1-\frac{1}{p_2})*...(1-\frac{1}{p_i})$, thus proves the equation.
+
+2.\\Given $f_n-1+f_n = f_{n+1}$
+
+$f_0 = 0,f_1 = 1,f_2 = 1,f_3 = 2,f_4=3,f_5=5$
+
+$f_0^2 = 0,f_1 ^2= 1,f_2 ^2= 1,f_3 ^ 2= 4,f_4 ^2=9$
+
+We observe that $S(n) = f_0^2+f_1^2+f_2^2...+f_n^2$,$S(3) = 6 = 2*3;S(4)=15 = 3*5$
+
+Make a assumption about the formula : $f_n*f_{n+1}=S(n),n \geq 0$,n is integer.
+
+By induction:
+Base case:$S(0)=0 = 0*1$, satisfies the case.
+
+Now we want to prove $S(n+1)=f_{n+1}*f_{n+2}$ by giving $f_n*f_{n+1}=S(n)$.
+
+Both sides add $f_{n+1}^2$
+
+RHS:$S(n+1)$
+
+LHS:$f_n*f_{n+1}+f_{n+1}^2 = f_{n+1}*(f_{n+1}+f_n)$.By the basic formula given at the beginning, $f_{n+1}*(f_{n+1}+f_n) = f_{n+1}*f_{n+2}$
+
+RHS = LHS,now it proves the equation.
+
+3.\\By trying small n values, there are :
+
+$t_1 = 1,t_2 = 3,t_3 = 7,t_4 = 15$, assumption about the recurrence formula is :
+$a_n=2*a_{n-1}+1,n>1$.Unfortunately,it is not a linear recurrence relationship, the guess method won't apply here.Instead of that ,we do a simple expansion:
+
+$a_0=1;a_1 = 1;a_2 = (2*(a_1)+1);a_3= (2*(a_2)+1)=(2*((2*(a_1)+1)+1)$;
+
+for $a_n=2*a_{n-1}+1$$$=2^{n-1}*a_1+(1+2+2^2+...2^{n-2})$$
+$$=2^{n-1}+2^{n-1}-1=2^n-1$$.By plug $t_1,t_2,t_3$ in, it satisfies the equation.
+
+By induction, we want to prove $t_{n+1} = 2^n-1$,we start with $t_n = 2^{n-1}-1$. Adding $t_n+1$ on both sides.
+
+LHS:	$t_{n+1}$
+
+RHS:	$(2^{n-1}-1)+(2^{n-1}-1)+1=2^n-1$,thus proves the equation.
+
+4.\\Total cases:$6^k$
+
+There are k standard dices(value 1,2,3,4,5,6) sum up to n.
+
+Generating function :$f_1(x)=x+x^2...+x^6$,$f_2(x)=x+x^2...+x^6$...$f_k(x)=x+x^2...+x^6$.
+
+According to Newton’s binomial theorem:(no restriction on dice)
+$$f(x)=\sum_{k \geq 0} C({n+k-1},k)x^k$$
+
+Suppose $a_1+a_2+...a_k = n$,$1 \leq a_k \leq 6$
+
+By substitute $a_k=b_k+1$,then $b_1+b_2+...b_k = n-k$,$0 \leq b_k $,$$f(x)=\sum_{k \geq 0} C({n-k+k-1},k)x^k=\sum_{k \geq 0} C({n-1},k)x^k$$
+However this case will include dice has value over $7$.\\
+That is we want to find $c_1+c_2+...c_k = n-k$,$7 \leq c_k $, substitute $ c_k=d_k+7$,$d_1+d_2+...d_k = n-k-7k=n-8k$,thus the case over $7$ is $$\sum_{k \geq 0} C({n-7k-1},k)x^k$$.
+
+By exclusion rule,the probability is $$\frac{\sum_{k \geq 0} C({n-1},k)x^k-\sum_{k \geq 0} C({n-7k-1},k)x^k}{6^k}$$
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Ruicheng Wu}
+\rhead{07/30/2017}
+\chead{Challenge Problem 5}
+
+
+
+\begin{document}
+3.
+
+We can form a bipartite graph:
+
+Set 1 : All n rows of this latin squares
+
+Set 2 : All n symbols
+
+Edges : connect each symbol to each row if and only if such symbol $a$ does not show up in row $b$.
+
+This graph satisfies Hall’s condition.Consequently, it has a perfect matching.This perfect matching stands for pair each row with a different
+symbol  up, with each paired symbol does not occur in that row yet. 
+
+Hence this perfect matching can produce 1 more columns for currently m x n matrix. If we repeat this step will eventually ends up with n x n latin square.
+
+4.
+
+First we can choose a random row or column ,which has 2n choices. 
+
+Let X be the number of distinct entries in it. Now X = $\sum K_i$, where each $K_i$ is the token of i appearing (may be more than one time)in the row/column that we choose. 
+
+Obviously, each $E[K_i] = P [K_i \geq 1]*n$. In order to solve this problem, we will find the lower bound.
+
+By observing that the worst-case is for each i,if its all n appearing times are in some $\sqrt[]{n} * \sqrt[]{n}$ matrix,which turns out $P [K_i \geq 1] \geq \frac{2\sqrt[]{n}}{2n} = \frac{1}{\sqrt[]{n}}$. 
+
+Hence,this is a linear probabilistic model, the total number is n. $$E(X) \geq P [K_i \geq 1] * n = \sqrt{n}$$
+
+5.
+
+We are going to solve this problem by setting a model using probabilistic method.
+
+Think of flipping a fair coin for each node; if it is head, we put the node in a set S and if it is tail, we do nothing.
+
+So we have a partition of the nodes into two sets, S and $V \S$. Now consider the subgraph obtained by just taking the edges crossing this partition, then we have created a bipartite subgraph of G.
+
+So the expected number of edges in the subgraph (in the cut) is $\frac{|E|}{2}$(because every edge has a 1/2 chance to be the crossing edge).
+
+By this probabilistic method, there must exist some subgraph with at least $\frac{|E|}{2}$ edges.
+
+6.
+
+We first connect the these 5 points.If there is a pentagon ,it is guaranteed to have a convex quadrilateral(just removing one point ant its edges). No quadrilateral by 5 points since no 3 points on a line.
+
+Here is another situation,we can obtain a triangle making by 3 points $(J,K,L)$ that the rest 2 points $A,B$ are inside of it.
+
+$A,B$ can make a straight line that intersects with the triangle at two sides.
+This is because no 3 points can be in one line.So it is impossible for this line to go through one point of the triangle then intersect only one side. There must be 2 sides to intersect.
+
+We then just find the lines from triangle cross by two points $J,K$ which does not intersect with $AB$ (in the triangle only!).
+
+J,K,A,B all together can make up a convex quadrilateral
+
+7.
+
+We think this expectation as all $B_i$ be 1,
+this explains $2^{-n}$ on the RHS.
+
+Then we can just apply the proof of Sperner’s Lemma.
+
+$$Pr[|\sum_{i=1}^n X_i|] \leq C(n,floor(\frac{n}{2}))$$
+
+By linear probabilistic method, the entire summation 
+
+\begin{huge}
+$$Pr[|\sum_{i=1}^n X_i* B_i|] \leq C(n,floor(\frac{n}{2}))* 1 * 2^{-n}$$
+\end{huge}
+
+There is an antichain X in $B_n$. Then
+$x_i = $ \{ $|X|=i$ \} will satisfy this equation.
+
+8.
+
+a)
+
+It is going to be the diagonal line of the matrix,specifically,$B = M^T*M$. It is just sum of square of each element in the i-th row. And we use 1 to stand for those i-th edge contains the j-th vertex. It is just like a laplacian of this matrix.
+
+$$B_{ij}={|V_1|,|V_2|,|V_3|...|V_m|;m is the edge number}$$
+
+It is the vertices that i-th edge covers.
+
+b)
+
+from a), we can know $B_{ij},i != j$ stands for how many numbers of vertices that i-th edge intersect with other edges.
+
+in the example
+
+$B_{ij} = (2,2,2,2,2,2,2,2,2..2)$,since every edge contains two comman vertices
+
+c)
+
+It is obviously that we can know if one vertex is covered by at least one edge. In B, on the diagonal,that edge will have at least 1 in the spot.
+
+If no other edges share this vertex, the other spots on that row will be 0 in B.Hence according to the definition of rank of a matrix. rkB is actually depending on the number of column, n .
+
+Else if there are other edges share that vertex, fill those spot with corresponding value. Just to remember the diagonal will certainly have a different bigger value than other values in same row,so there is no more echelon form to conduct also. It is depending on the n too.
+
+d)
+
+Think as  
+
+
+
+
+\end{document}

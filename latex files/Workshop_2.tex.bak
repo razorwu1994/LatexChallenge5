@@ -1,0 +1,44 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Ruicheng Wu}
+\rhead{07/6/2017}
+\chead{Workshop 2}
+
+\begin{document}
+2.Total : 11! ways to rearrange the word
+
+a.
+
+Choose 1: Choose 3 spots to place letter in order of 'R','I','M', $C(11,3)$ ways.
+
+Choice 2: There are 8 letters left : $8!$
+
+The probability to get 'RIM' is $C(11,3)*8!/11! = 1/6 $. Thus by subtraction rule, $$1-C(11,3)*8!/11! = 5/6$$
+
+b. Set up model set A ={can make CARE}, B={can make JURY}.Thus $|A \cup B|$ = {can make either CARE or JURY} = $|A|+|B|-|A \cap B|$
+
+Choose CARE : $C(11,4)*7!/11! = \frac{1}{4!}$
+
+Choose JURY : $C(11,4)*7!/11! = \frac{1}{4!}$
+
+Choose CARE,JURY at the same time:$C(11,7)*4!/11! = \frac{1}{7!} $
+
+So $|A \cup B|$ = $\frac{2}{4!} - \frac{1}{7!} = \frac{419}{5040}$.Thus by subtraction rule, you can not make either CARE or JURY is $1-\frac{419}{5040} = \frac{4621}{5040} = 0.91686507936$
+
+c.Set up model set A ={can make CARE}, B={can make JURY} , C={can make RIM}.Thus $|A \cup B \cup C|$ = {can make either CARE or JURY or RIM} = $|A|+|B|+|C|-|A \cap B|-|B \cap C|-|A \cap C|+|A \cap B \cap C|$
+
+$$|A|+|B|+|C| = \frac{2}{4!}+\frac{1}{3!}= \frac{1}{4}$$
+$$|A \cap C| = |B \cap C| = C(11,6)*5!/11! = \frac{1}{6!}$$
+$$|A \cap B| = \frac{1}{7!}$$
+$$|A \cap B \cap C| = C(11,9)*2!/11! = \frac{1}{9!} $$
+
+So grand total is : $\frac{1}{4}-\frac{2}{6!}-\frac{1}{7!}+\frac{1}{9!}= 0.24702656525$.
+
+Thus by subtraction rule : $1-0.24702656525 = 0.75297343474$ is the probability that can't make any of words, CARE , JURY or RIM
+
+
+
+
+\end{document}

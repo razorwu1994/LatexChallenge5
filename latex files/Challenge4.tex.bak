@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Ruicheng Wu}
+\rhead{07/23/2017}
+\chead{Challenge Problem 4}
+
+
+\begin{document}
+
+1.
+
+Given there is a vertex with maximum degree d in a connected graph, we know that there are $d+1$ vertices. 
+
+Minimum case:(one vertex with degree d-1)
+Assume there is only one vertex with degree $d-1$. It means now we have a vertex $v_1$ connecting to all other vertices and also  a vertex $v_2$ connecting to all other vertices except one $v_{d+1}$.
+
+Given d colors, if we want to do proper color on this graph. We will know $v_1$ and $v_2$ must be different color since they are adjacent to each other. The rest vertices $v_3,v_4...v_d$ must be different from these two colors since each of them are at least adjacent to $v_1$ and $v_2$.So they can be distributed with maximum $d-2$ colors. Now consider $v_{d+1}$,it is not adjacent to $v_2$, it could take any colors except the one $v_1$ use. 
+
+In total,we can use $2+d-2 = d$ colors to color the graph.
+
+Maximum case(up to d vertices with degree d-1)
+This case, we will have one vertex $v_1$ with $d$ degree. Among other vertices, every one vertex will be disconnected with only one vertex because every one of them are $d-1$ degree(But they must connect $v_1$). So that means $v_2$ may not be adjacent to $v_3$,and vice versa;$v_4$ may not be adjacent to $v_5$...And so forth.Since each vertex will have another one non-adjacent to it.We can still color two by two with d-2 colors for $v_2,v_3...v_{d-1}$($v_1$ has 1 color already).Now we may end up with just one vertex or two vertices(depends on if d is odd or even), simply we can just use 1 color to color them since those two are non-adjacent to each other. Thus $1+d-2+1 = d$ colors can be used to proper color this graph.
+
+Since we prove both the least case and the max case will satisfy this condition, we prove the whole thing.
+
+2.
+(No matter how this formula looks nonsense to me I will just prove it)
+
+Since it is a tree : 
+
+It will have n-1 edges;
+
+There are n vertices since the order n of tree defines that.
+
+I will conduct two equations:
+
+\begin{large}
+
+$$EqOne = d_1+d_2...+d_{n-1} = n$$
+
+no way there will be vertex with n degree!
+
+$$EqTwo = 1*d_1+2*d_2...+(n-1)*d_{n-1} =2|E| = 2(n-1)=2n-2$$
+
+\end{large}
+
+EqTwo-EqOne=
+
+$$d_2+2*d_3+3*d_4...+(n-2)d_{n-1}=n-2$$
+
+LHS can be separate as:
+
+$$(d_2+d_3+d_4...+d_{n-1})+(d_3+2*d_4+3*d_5...+(n-3)*d_{n-1})$$
+
+So the equation now would be :
+$$(d_3+2*d_4+3*d_5...+(n-3)*d_{n-1}) = n-2 - (d_2+d_3+d_4...+d_{n-1})$$
+
+=$$2+d_3+2*d_4+3*d_5...+(n-3)*d_{n-1} = n-(d_2+d_3+d_4...+d_{n-1}) = d_1$$
+
+which proves the question.
+
+3.
+
+
+
+
+
+5.
+
+Treat De Bruijn sequence as connected directed graph like $DB_n$.
+We note that a De Bruijn sequence of order n is just an Eulerian
+circuit of $DB_n$. 
+First of all, we need to prove that an Eulerian circuit exists. According to the theorem 0.1 : "A looped directed multigraph
+G with no isolated vertices has an Eulerian circuit if and only if the in-degree and out-degree of every vertex is equal to each other."
+
+Given a string $S_0S_1...S_{k-2}$ of length $n > 1$ written with k symbols from $S_k={a,b,c...}$, there are k strings that could follow it in a De Bruijn sequence:
+(Their length are n)
+
+$S_0S_1...S_{k-2}S_0$, 
+
+$S_0S_1...S_{k-2}S_1$,
+
+$S_0S_1...S_{k-2}S_{k-1}$,
+
+...
+
+We can create a de Bruijn graph - with $k^n$ vertices, labelled by the $k^n$ strings of length n in k symbols. We join the node labelled $S_0S_1...S_{k-2}$ to other nodes with labelled edge which the node "to" begins. For example, the edge joining $S_0S_1...S_{k-2}S_0$ to $S_1...S_{k-2}S_0S_1$ is labelled "$S_1$".
+
+Similary, there are also k strings that could have preceeded it :
+(Their length are n)
+
+$S_0S_0S_1...S_{k-2}$, 
+
+$S_1S_0S_1...S_{k-2}$, 
+
+$S_{k-1}S_0S_1...S_{k-2}$,
+
+...
+
+This tells us that every vertex on a de Bruijn's graph has both indegree and outdegree equal to k.
+
+Additionally, a DB graph is necessarily connected. There is a path from any vertex $S_0S_0S_1...S_{k-2}$ to any other vertex $S_0S_1...S_{k-2}S_{k-1}$. For example. For n = 2, here is a path from $S_0S_2$ to $S_1S_4$:
+
+$$S_0S_2, S_2S_1, S_1S_4 , S_4S_0 , S_0S_2$$(A cycle here)
+
+It follows that a DB graph always has an Euler circuit. Pick any such circuit, record the successive edge labels in a string. The result will be one of de-Bruijn sequence.
+
+
+Week 1 fix:
+
+no fix :-p(would take up more times than i have to rethink these problems...)
+
+
+
+
+
+\end{document}

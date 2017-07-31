@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Ruicheng Wu}
+\rhead{07/27/2017}
+\chead{Workshop 5}
+
+
+\begin{document}
+1.
+
+As for every vertex ,the degree is $n-1$.According to ore's theorem, there is a Hamiltonian path in $K_n$.
+No matter a) or b), I will just consider a Hamiltonian path in $K_n$ will stop by n vertices(think as n stops for a road trip).So the choices all permutation of these stops is $n!$($K_n's$ property,every vertices connecting all remaining vertices). Besides,there are $n-1$ edges since there are n vertices for a Hamiltonian path.
+
+Now we add another limitation,which requires a monochromatic path. We have that $$E(X) = Pr(X = Red) · 1 + Pr(X = Blue) · 0 = Pr(X = Red) = \frac{1}{2^{n-1}}$$
+
+This is like an linear expectation problem: n! * $\frac{1}{2^{n-1}}$ turns out to be the expectation of this question which is  * $\frac{n!}{2^{n-1}}$, this proves for a) and b) since it is an expectation number.
+
+
+4.
+Think this combinatorically:
+
+We can consider this as a random coloring of $K_n$ with each edge colored red or blue with probability 1/2. The probability from any groups of n vertices that has all edges on that clique(every two edges adjacent to each other) of same color is $2^{1-C(n,2)}$.The number of such group is $C(r,n)$.Hence the probability that there is at least one monochromatic clique is at most:
+
+$$C(r,n)*2^{1-C(n,2)}$$
+
+,we know =$>$ $C(r,n)*2^{1-C(n,2)} < 1$
+
+And we are given the two estimation:
+
+$$\frac{2r^n}{n!*2^{\frac{n*(n-1)}{2}}}$$
+
+in order to estimate this, i assume $r = 2^{\frac{n}{2}}$,plug in and discard some constants:
+
+$$\frac{2^{1+\frac{n}{2}}}{n!} < 1$$
+
+
+\end{document}

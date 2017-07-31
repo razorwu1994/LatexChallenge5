@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Ruicheng Wu}
+\rhead{06/28/2017}
+\chead{Homework 1}
+
+\begin{document}
+1.
+
+Step$1$:the total is a permutation of 5 elements
+
+Step$2$:a function $f$ can map (Rainbow,Red Ballon,Clover,Horseshoe,Heart) to {Rainbow,Red Ballon,Clover,Horseshoe,Heart}(Order matters), it is a $k$ to one relationship
+
+Step$3$:we can tell 
+$$f(Rainbow,Red Ballon,Clover,Horseshoe,Heart)$$$$=f(Heart,Rainbow,Red Ballon,Clover,Horseshoe)$$
+$$=f(Red Ballon,Clover,Horseshoe,Heart,Rainbow)$$ 
+
+with total 5 cases map to 1 same result. So it is a 5 to 1 relationship.
+
+Step$4$:hence, according to division principle, we take $5!/5 = 4! = 24$ different combinations\\
+
+2.
+
+a. with repetition, it is $5^5$ sequences
+
+b. with repetition,since first and last spot has assigned by $A$,the rest spot can have $5^3$ sequences.Thus the total is $5^3*1*1$.
+
+c. length 0,1 won't apply to this question. 
+
+Let's start with length 2: $CD$, 1 way to do this
+
+length 3: choice one: $CD$ is a whole part,now there are 2 options to put $CD$; choice two: no matter where to put $CD$, the rest spot can not be $C$, so there are 4 choices. By multiplication principle, Total is $2*4=8$
+
+length 4: choice one: treat $CD$ as a whole part, now there are 3 options; choice two: no more $C$,rest two spots can have a $4^2=16$ choices.By multiplication principle, Total is $3*16 = 48$
+
+length 5: choice one: treat $CD$ as a whole part, now there are 4 options; choice two: no more $C$,rest three spots can have a $4^3=64$ choices.By multiplication principle, Total is $4*64=256$
+
+Grand total is $1+8+16+64 = 89$ according to addition principle.
+
+d. 
+
+Choice 1: there are $(6,2)$ combinations to put those two B's
+
+Choice 2: other 4 spots can't have any B,so it is $4^4 = 256$
+
+Total: by multiplication principle, the grand total is $6!/(2!4!)*256 = 3840$
+
+e. 
+
+Split the situations by length
+
+First of all by pigeon hole principle, the length of the sequence can be more than 5 when each letter appears at most once.
+
+length 0: if the empty sequence counts,otherwise ignore this case
+
+length 1: $C(5,1) = 5$ , each letter appears once
+
+length 2: $5^2-5 = 20$ , subtraction principle, all permutation subtract case when sequence contains duplicate letters
+
+length 3: 
+choice 1 : choose 3 letters $C(5,3) = 10$
+choice 2 : permutation of those 3 letters $3! = 6$
+total : $10*6=60$
+
+length 4:
+choice 1 : choose 4 letters $C(5,4) = 5$
+choice 2 : permutation of those 4 letters $4! = 24$
+total : $5*24=120$
+
+length 5:
+choice 1 : choose 5 letters $C(5,5) = 1$
+choice 2 : permutation of those 5 letters $5! = 120$
+total : $1*120=120$\\
+
+3.
+
+I will divide this question into two parts since it is asking numbers of distinct pairs of committees.
+For engineer committee: $C(13,5) = 1287$
+For scientist committee: $$C(7,2)+C(7,3)+C(7,4)+C(7,5)+C(7,6)+C(7,7) = 120$$
+The result will be these two possibilities multiplying each other : $1287 * 120 = 154440$\\
+
+4.
+
+a.
+Assume there are two disjoint sets,A,B. A = ${x_1, . . . , x_m}$ and B = ${y_1, . . . , y_n}$. LHS is number of subsets of $A∪B$ of size r. RHS counts same thing by selecting k elements from A ($C(m,k)$ ways), then selecting the remaining $r − k$ elements from B ($C(n,r−k)$ ways), k is integer ranging from 0 to r,that is all the cases which equals the LHS.	Thus prove the equation.
+
+
+b. 
+Assume there are two disjoint sets,A,B with size n respectively. LHS counts a size 2 subset of $A∪B$. RHS first term counts a size 2 subset from each set A,B. By addition rule, $C(n,2)+C(n,2)$. Second term counts the situation when one element comes from A,one element comes from B. The grand total,add these up, counts the same thing as RHS. Thus prove the equation.
+
+
+
+
+\end{document}
